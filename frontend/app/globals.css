@@ -1,0 +1,284 @@
+@import "tailwindcss";
+
+/* Indian Kundali Theme Colors */
+:root {
+  /* Primary Colors */
+  --saffron: #FF6B35;
+  --saffron-light: #FF8F65;
+  --saffron-dark: #E55A2B;
+  
+  /* Secondary Colors */
+  --maroon: #8B0000;
+  --maroon-light: #A52A2A;
+  --maroon-dark: #5C0000;
+  
+  /* Accent Colors */
+  --gold: #FFD700;
+  --gold-light: #FFE44D;
+  --gold-dark: #B8860B;
+  
+  /* Neutral Colors */
+  --cream: #FFF8E7;
+  --cream-dark: #F5E6C8;
+  --deep-blue: #1A237E;
+  --deep-blue-light: #3949AB;
+  
+  /* Background & Foreground */
+  --background: #FFF8E7;
+  --background-card: #FFFFFF;
+  --foreground: #2D1810;
+  --foreground-muted: #5C4033;
+  
+  /* Chart Colors */
+  --chart-house: #FFF8E7;
+  --chart-border: #8B0000;
+  --chart-accent: #FFD700;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-saffron: var(--saffron);
+  --color-maroon: var(--maroon);
+  --color-gold: var(--gold);
+  --color-cream: var(--cream);
+  --color-deep-blue: var(--deep-blue);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Dark Mode - Rich Deep Theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1A0F0A;
+    --background-card: #2D1810;
+    --foreground: #FFF8E7;
+    --foreground-muted: #D4C4B0;
+    --chart-house: #2D1810;
+    --chart-border: #FFD700;
+  }
+}
+
+/* Base Styles */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Mandala Pattern Background */
+.mandala-bg {
+  background-image: 
+    radial-gradient(ellipse at center, transparent 0%, var(--background) 70%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFD700' fill-opacity='0.08'%3E%3Cpath d='M30 30m-28 0a28 28 0 1 1 56 0a28 28 0 1 1 -56 0M30 30m-20 0a20 20 0 1 0 40 0a20 20 0 1 0 -40 0M30 30m-12 0a12 12 0 1 1 24 0a12 12 0 1 1 -24 0'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--saffron) 0%, var(--gold) 50%, var(--maroon) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card Styles */
+.card-vedic {
+  background: var(--background-card);
+  border: 2px solid var(--gold);
+  border-radius: 12px;
+  box-shadow: 
+    0 4px 6px rgba(139, 0, 0, 0.1),
+    0 0 20px rgba(255, 215, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card-vedic:hover {
+  box-shadow: 
+    0 8px 25px rgba(139, 0, 0, 0.15),
+    0 0 30px rgba(255, 215, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Button Styles */
+.btn-primary {
+  background: linear-gradient(135deg, var(--saffron) 0%, var(--maroon) 100%);
+  color: white;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--saffron-light) 0%, var(--maroon-light) 100%);
+  transform: scale(1.02);
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--maroon);
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid var(--gold);
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--gold);
+  color: var(--maroon-dark);
+}
+
+/* Input Styles */
+.input-vedic {
+  background: var(--background-card);
+  border: 2px solid var(--gold-dark);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: var(--foreground);
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.input-vedic:focus {
+  outline: none;
+  border-color: var(--saffron);
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+}
+
+/* Section Title */
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--maroon);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+}
+
+/* Kundli Chart Styles */
+.kundli-chart {
+  --chart-size: 400px;
+  width: var(--chart-size);
+  height: var(--chart-size);
+  position: relative;
+  margin: 0 auto;
+}
+
+.kundli-house {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: var(--chart-house);
+  border: 2px solid var(--chart-border);
+  font-size: 0.85rem;
+  padding: 4px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.kundli-house:hover {
+  background: var(--gold-light);
+  z-index: 10;
+}
+
+.house-number {
+  font-size: 0.7rem;
+  color: var(--foreground-muted);
+  position: absolute;
+  top: 2px;
+  left: 4px;
+}
+
+.planet-abbr {
+  font-weight: 700;
+  color: var(--maroon);
+}
+
+.planet-retrograde {
+  color: var(--deep-blue);
+}
+
+/* Om Symbol Animation */
+@keyframes glow {
+  0%, 100% { text-shadow: 0 0 10px var(--gold), 0 0 20px var(--saffron); }
+  50% { text-shadow: 0 0 20px var(--gold), 0 0 40px var(--saffron); }
+}
+
+.om-symbol {
+  animation: glow 3s ease-in-out infinite;
+}
+
+/* Loading Spinner */
+.loader-vedic {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--cream);
+  border-top-color: var(--saffron);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Dasha Timeline */
+.dasha-timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.dasha-timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--gold), var(--maroon));
+}
+
+.dasha-item {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: var(--background-card);
+  border-radius: 8px;
+  border-left: 4px solid var(--saffron);
+}
+
+.dasha-item::before {
+  content: '';
+  position: absolute;
+  left: -26px;
+  top: 20px;
+  width: 12px;
+  height: 12px;
+  background: var(--gold);
+  border: 2px solid var(--maroon);
+  border-radius: 50%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .kundli-chart {
+    --chart-size: 320px;
+  }
+}

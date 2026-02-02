@@ -8,3 +8,6 @@ output/
 debug_log.txt
 *.pdf
 temp_*.pdf
+server.log
+__pycache__/
+*.pyc
