@@ -1,0 +1,573 @@
+{
+    "nakshatras": [
+        {
+            "name": "Ashwini",
+            "yoni": "Horse",
+            "gana": "Deva",
+            "nadi": "Aadi",
+            "lord": "Ketu",
+            "padas": [
+                "Chu",
+                "Che",
+                "Cho",
+                "La"
+            ]
+        },
+        {
+            "name": "Bharani",
+            "yoni": "Elephant",
+            "gana": "Manava",
+            "nadi": "Madhya",
+            "lord": "Venus",
+            "padas": [
+                "Li",
+                "Lu",
+                "Le",
+                "Lo"
+            ]
+        },
+        {
+            "name": "Krittika",
+            "yoni": "Goat",
+            "gana": "Rakshasa",
+            "nadi": "Antya",
+            "lord": "Sun",
+            "padas": [
+                "A",
+                "Ee",
+                "U",
+                "E"
+            ]
+        },
+        {
+            "name": "Rohini",
+            "yoni": "Sarpa",
+            "gana": "Manava",
+            "nadi": "Antya",
+            "lord": "Moon",
+            "padas": [
+                "O",
+                "Va",
+                "Vi",
+                "Vu"
+            ]
+        },
+        {
+            "name": "Mrigashira",
+            "yoni": "Sarpa",
+            "gana": "Deva",
+            "nadi": "Madhya",
+            "lord": "Mars",
+            "padas": [
+                "Ve",
+                "Vo",
+                "Ka",
+                "Ki"
+            ]
+        },
+        {
+            "name": "Ardra",
+            "yoni": "Dog",
+            "gana": "Manava",
+            "nadi": "Aadi",
+            "lord": "Rahu",
+            "padas": [
+                "Ku",
+                "Gha",
+                "Ng",
+                "Chha"
+            ]
+        },
+        {
+            "name": "Punarvasu",
+            "yoni": "Cat",
+            "gana": "Deva",
+            "nadi": "Aadi",
+            "lord": "Jupiter",
+            "padas": [
+                "Ke",
+                "Ko",
+                "Ha",
+                "Hi"
+            ]
+        },
+        {
+            "name": "Pushya",
+            "yoni": "Goat",
+            "gana": "Deva",
+            "nadi": "Madhya",
+            "lord": "Saturn",
+            "padas": [
+                "Hu",
+                "He",
+                "Ho",
+                "Da"
+            ]
+        },
+        {
+            "name": "Ashlesha",
+            "yoni": "Cat",
+            "gana": "Rakshasa",
+            "nadi": "Antya",
+            "lord": "Mercury",
+            "padas": [
+                "Di",
+                "Du",
+                "De",
+                "Do"
+            ]
+        },
+        {
+            "name": "Magha",
+            "yoni": "Rat",
+            "gana": "Rakshasa",
+            "nadi": "Antya",
+            "lord": "Ketu",
+            "padas": [
+                "Ma",
+                "Mi",
+                "Mu",
+                "Me"
+            ]
+        },
+        {
+            "name": "Purva Phalguni",
+            "yoni": "Rat",
+            "gana": "Manava",
+            "nadi": "Madhya",
+            "lord": "Venus",
+            "padas": [
+                "Mo",
+                "Ta",
+                "Ti",
+                "Tu"
+            ]
+        },
+        {
+            "name": "Uttara Phalguni",
+            "yoni": "Cow",
+            "gana": "Manava",
+            "nadi": "Aadi",
+            "lord": "Sun",
+            "padas": [
+                "Te",
+                "To",
+                "Pa",
+                "Pi"
+            ]
+        },
+        {
+            "name": "Hasta",
+            "yoni": "Buffalo",
+            "gana": "Deva",
+            "nadi": "Aadi",
+            "lord": "Moon",
+            "padas": [
+                "Pu",
+                "Sha",
+                "Na",
+                "Tha"
+            ]
+        },
+        {
+            "name": "Chitra",
+            "yoni": "Tiger",
+            "gana": "Rakshasa",
+            "nadi": "Madhya",
+            "lord": "Mars",
+            "padas": [
+                "Pe",
+                "Po",
+                "Ra",
+                "Ri"
+            ]
+        },
+        {
+            "name": "Swati",
+            "yoni": "Buffalo",
+            "gana": "Deva",
+            "nadi": "Aadi",
+            "lord": "Rahu",
+            "padas": [
+                "Ru",
+                "Re",
+                "Ro",
+                "Ta"
+            ]
+        },
+        {
+            "name": "Vishakha",
+            "yoni": "Tiger",
+            "gana": "Rakshasa",
+            "nadi": "Antya",
+            "lord": "Jupiter",
+            "padas": [
+                "Ti",
+                "Tu",
+                "Te",
+                "To"
+            ]
+        },
+        {
+            "name": "Anuradha",
+            "yoni": "Deer",
+            "gana": "Deva",
+            "nadi": "Madhya",
+            "lord": "Saturn",
+            "padas": [
+                "Na",
+                "Ni",
+                "Nu",
+                "Ne"
+            ]
+        },
+        {
+            "name": "Jyeshtha",
+            "yoni": "Deer",
+            "gana": "Rakshasa",
+            "nadi": "Aadi",
+            "lord": "Mercury",
+            "padas": [
+                "No",
+                "Ya",
+                "Yi",
+                "Yu"
+            ]
+        },
+        {
+            "name": "Mula",
+            "yoni": "Dog",
+            "gana": "Rakshasa",
+            "nadi": "Aadi",
+            "lord": "Ketu",
+            "padas": [
+                "Ye",
+                "Yo",
+                "Bha",
+                "Bhi"
+            ]
+        },
+        {
+            "name": "Purva Ashadha",
+            "yoni": "Monkey",
+            "gana": "Manava",
+            "nadi": "Madhya",
+            "lord": "Venus",
+            "padas": [
+                "Bhu",
+                "Dha",
+                "Pha",
+                "Dha"
+            ]
+        },
+        {
+            "name": "Uttara Ashadha",
+            "yoni": "Mongoose",
+            "gana": "Manava",
+            "nadi": "Antya",
+            "lord": "Sun",
+            "padas": [
+                "Bhe",
+                "Bho",
+                "Ja",
+                "Ji"
+            ]
+        },
+        {
+            "name": "Shravana",
+            "yoni": "Monkey",
+            "gana": "Deva",
+            "nadi": "Aadi",
+            "lord": "Moon",
+            "padas": [
+                "Khi",
+                "Khu",
+                "Khe",
+                "Kho"
+            ]
+        },
+        {
+            "name": "Dhanishta",
+            "yoni": "Lion",
+            "gana": "Rakshasa",
+            "nadi": "Madhya",
+            "lord": "Mars",
+            "padas": [
+                "Ga",
+                "Gi",
+                "Gu",
+                "Ge"
+            ]
+        },
+        {
+            "name": "Shatabhisha",
+            "yoni": "Horse",
+            "gana": "Rakshasa",
+            "nadi": "Aadi",
+            "lord": "Rahu",
+            "padas": [
+                "Go",
+                "Sa",
+                "Si",
+                "Su"
+            ]
+        },
+        {
+            "name": "Purva Bhadrapada",
+            "yoni": "Lion",
+            "gana": "Manava",
+            "nadi": "Antya",
+            "lord": "Jupiter",
+            "padas": [
+                "Se",
+                "So",
+                "Da",
+                "Di"
+            ]
+        },
+        {
+            "name": "Uttara Bhadrapada",
+            "yoni": "Cow",
+            "gana": "Manava",
+            "nadi": "Madhya",
+            "lord": "Saturn",
+            "padas": [
+                "Du",
+                "Tha",
+                "Jha",
+                "Jna"
+            ]
+        },
+        {
+            "name": "Revati",
+            "yoni": "Elephant",
+            "gana": "Deva",
+            "nadi": "Antya",
+            "lord": "Mercury",
+            "padas": [
+                "De",
+                "Do",
+                "Cha",
+                "Chi"
+            ]
+        }
+    ],
+    "rashis": [
+        {
+            "name": "Aries",
+            "hindi": "Mesha",
+            "varna": "Kshatriya",
+            "vashya": "Chatushpad",
+            "lord": "Mars",
+            "element": "Fire"
+        },
+        {
+            "name": "Taurus",
+            "hindi": "Vrishabha",
+            "varna": "Shudra",
+            "vashya": "Chatushpad",
+            "lord": "Venus",
+            "element": "Earth"
+        },
+        {
+            "name": "Gemini",
+            "hindi": "Mithuna",
+            "varna": "Vaishya",
+            "vashya": "Manav",
+            "lord": "Mercury",
+            "element": "Air"
+        },
+        {
+            "name": "Cancer",
+            "hindi": "Karka",
+            "varna": "Brahmin",
+            "vashya": "Keeta",
+            "lord": "Moon",
+            "element": "Water"
+        },
+        {
+            "name": "Leo",
+            "hindi": "Simha",
+            "varna": "Kshatriya",
+            "vashya": "Vanchar",
+            "lord": "Sun",
+            "element": "Fire"
+        },
+        {
+            "name": "Virgo",
+            "hindi": "Kanya",
+            "varna": "Shudra",
+            "vashya": "Manav",
+            "lord": "Mercury",
+            "element": "Earth"
+        },
+        {
+            "name": "Libra",
+            "hindi": "Tula",
+            "varna": "Vaishya",
+            "vashya": "Manav",
+            "lord": "Venus",
+            "element": "Air"
+        },
+        {
+            "name": "Scorpio",
+            "hindi": "Vrishchika",
+            "varna": "Brahmin",
+            "vashya": "Keeta",
+            "lord": "Mars",
+            "element": "Water"
+        },
+        {
+            "name": "Sagittarius",
+            "hindi": "Dhanu",
+            "varna": "Kshatriya",
+            "vashya": "Manav",
+            "lord": "Jupiter",
+            "element": "Fire"
+        },
+        {
+            "name": "Capricorn",
+            "hindi": "Makara",
+            "varna": "Shudra",
+            "vashya": "Jalchar",
+            "lord": "Saturn",
+            "element": "Earth"
+        },
+        {
+            "name": "Aquarius",
+            "hindi": "Kumbha",
+            "varna": "Vaishya",
+            "vashya": "Manav",
+            "lord": "Saturn",
+            "element": "Air"
+        },
+        {
+            "name": "Pisces",
+            "hindi": "Meena",
+            "varna": "Brahmin",
+            "vashya": "Jalchar",
+            "lord": "Jupiter",
+            "element": "Water"
+        }
+    ],
+    "samvatsaras": [
+        "Prabhava",
+        "Vibhava",
+        "Shukla",
+        "Pramoda",
+        "Prajapati",
+        "Angirasa",
+        "Shrimukha",
+        "Bhava",
+        "Yuva",
+        "Dhata",
+        "Ishvara",
+        "Bahudhanya",
+        "Pramathi",
+        "Vikrama",
+        "Vrisha",
+        "Chitrabhanu",
+        "Svabhanu",
+        "Tarana",
+        "Parthiva",
+        "Vyaya",
+        "Sarvajit",
+        "Sarvadhari",
+        "Virodhi",
+        "Vikrti",
+        "Khara",
+        "Nandana",
+        "Vijaya",
+        "Jaya",
+        "Manmatha",
+        "Durmukha",
+        "Hevilambi",
+        "Vilambi",
+        "Vikari",
+        "Sharvari",
+        "Plava",
+        "Shubhakrt",
+        "Shobhakrt",
+        "Krodhi",
+        "Vishvavasu",
+        "Parabhava",
+        "Plavanga",
+        "Kilaka",
+        "Saumya",
+        "Sadharana",
+        "Virodhikrt",
+        "Paridhavi",
+        "Pramadicha",
+        "Ananda",
+        "Rakshasa",
+        "Nala",
+        "Pingala",
+        "Kalayukti",
+        "Siddharthi",
+        "Raudri",
+        "Durmathi",
+        "Dundubhi",
+        "Rudhirodgari",
+        "Raktakshi",
+        "Krodhana",
+        "Akshaya"
+    ],
+    "paya": {
+        "gold": [
+            0,
+            3,
+            6,
+            9,
+            12,
+            15,
+            18,
+            21,
+            24
+        ],
+        "silver": [
+            1,
+            4,
+            7,
+            10,
+            13,
+            16,
+            19,
+            22,
+            25
+        ],
+        "copper": [
+            2,
+            5,
+            8,
+            11,
+            14,
+            17,
+            20,
+            23,
+            26
+        ],
+        "iron": []
+    },
+    "hansak_elements": {
+        "fire": [
+            0,
+            4,
+            8
+        ],
+        "earth": [
+            1,
+            5,
+            9
+        ],
+        "air": [
+            2,
+            6,
+            10
+        ],
+        "water": [
+            3,
+            7,
+            11
+        ]
+    }
+}

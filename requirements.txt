@@ -2,6 +2,7 @@ fastapi
 uvicorn
 ephem
 reportlab
+sqlalchemy
 pypdf
 ephem
 reportlab
