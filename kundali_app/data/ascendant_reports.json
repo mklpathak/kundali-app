@@ -1,0 +1,268 @@
+{
+    "ascendant_reports": {
+        "Aries": {
+            "sign": "Aries",
+            "lord": "Mars",
+            "symbol": "The Ram",
+            "characteristics": "Fiery, Movable, East",
+            "lucky_gems": "Red Coral",
+            "day_of_fast": "Tuesday",
+            "description": "People with Aries rising tend to be energetic, pioneering, assertive, impulsive, active, courageous, ambitious, headstrong, impatient, independent, and self-centered. You have a strong need to be first and to lead. You are direct and straightforward in your approach to life. You possess natural leadership abilities and are not afraid to take initiative. There is a childlike quality to your personality that can be both endearing and frustrating. You act first and think later, which can lead to hasty decisions. Your enthusiasm and energy inspire others, but you may need to learn patience and consideration for others' feelings.",
+            "spiritual_lesson": "Patience and Consideration",
+            "positive_traits": [
+                "Courageous",
+                "Energetic",
+                "Independent",
+                "Pioneering"
+            ],
+            "negative_traits": [
+                "Impulsive",
+                "Impatient",
+                "Self-centered",
+                "Aggressive"
+            ]
+        },
+        "Taurus": {
+            "sign": "Taurus",
+            "lord": "Venus",
+            "symbol": "The Bull",
+            "characteristics": "Earthy, Fixed, South",
+            "lucky_gems": "Diamond",
+            "day_of_fast": "Friday",
+            "description": "People with Taurus rising tend to be practical, determined, patient, persistent, stable, reliable, sensual, possessive, stubborn, and materialistic. You have a strong need for security, comfort, and material possessions. Your approach to life is slow, steady, and methodical. You are naturally drawn to beauty, comfort, and the finer things in life. Venus rules Taurus, giving you an appreciation for art, music, and aesthetics. Once you set your mind on something, you are nearly impossible to deter. Your patience is legendary, but so is your stubbornness when pushed.",
+            "spiritual_lesson": "Non-attachment and Flexibility",
+            "positive_traits": [
+                "Patient",
+                "Reliable",
+                "Practical",
+                "Sensual"
+            ],
+            "negative_traits": [
+                "Stubborn",
+                "Possessive",
+                "Materialistic",
+                "Rigid"
+            ]
+        },
+        "Gemini": {
+            "sign": "Gemini",
+            "lord": "Mercury",
+            "symbol": "The Twins",
+            "characteristics": "Airy, Dual, West",
+            "lucky_gems": "Emerald",
+            "day_of_fast": "Wednesday",
+            "description": "People with Gemini rising tend to be curious, communicative, versatile, witty, adaptable, nervous, restless, scattered, and dual in nature. You have a strong need for mental stimulation and variety. Your mind is quick and agile, always seeking new information and experiences. Mercury rules Gemini, making communication your forte. You can talk to anyone about anything and often have many diverse interests. Your dual nature means you can see both sides of any issue, which can make decision-making challenging. You thrive in environments that offer constant change and mental challenges.",
+            "spiritual_lesson": "Focus and Commitment",
+            "positive_traits": [
+                "Communicative",
+                "Versatile",
+                "Witty",
+                "Curious"
+            ],
+            "negative_traits": [
+                "Restless",
+                "Superficial",
+                "Inconsistent",
+                "Nervous"
+            ]
+        },
+        "Cancer": {
+            "sign": "Cancer",
+            "lord": "Moon",
+            "symbol": "The Crab",
+            "characteristics": "Watery, Movable, North",
+            "lucky_gems": "Pearl",
+            "day_of_fast": "Monday",
+            "description": "People with Cancer rising tend to be nurturing, protective, emotional, intuitive, moody, sensitive, tenacious, and home-loving. You have a strong need for emotional security and family connections. The Moon rules Cancer, making you highly sensitive to your environment and the emotions of others. Your moods can change like the phases of the Moon. You are naturally caring and want to take care of everyone around you. Home and family are extremely important to you. You may have a tendency to hold onto the past and have difficulty letting go of people and situations.",
+            "spiritual_lesson": "Emotional Detachment and Self-reliance",
+            "positive_traits": [
+                "Nurturing",
+                "Intuitive",
+                "Protective",
+                "Loyal"
+            ],
+            "negative_traits": [
+                "Moody",
+                "Clingy",
+                "Oversensitive",
+                "Pessimistic"
+            ]
+        },
+        "Leo": {
+            "sign": "Leo",
+            "lord": "Sun",
+            "symbol": "The Lion",
+            "characteristics": "Fiery, Fixed, East",
+            "lucky_gems": "Ruby",
+            "day_of_fast": "Sunday",
+            "description": "People with Leo rising tend to be confident, dramatic, proud, generous, creative, self-expressive, warm-hearted, dignified, ambitious, and attention-seeking. You have a strong need for recognition and appreciation. The Sun rules Leo, giving you a natural radiance and magnetism that draws others to you. You have a regal bearing and expect to be treated with respect. Your creativity and self-expression are important outlets for your energy. You are generous with your time and resources, especially when it earns you admiration. Leadership comes naturally to you, and you often find yourself in positions of authority.",
+            "spiritual_lesson": "Humility and Service",
+            "positive_traits": [
+                "Confident",
+                "Generous",
+                "Creative",
+                "Warm-hearted"
+            ],
+            "negative_traits": [
+                "Arrogant",
+                "Dominating",
+                "Vain",
+                "Self-centered"
+            ]
+        },
+        "Virgo": {
+            "sign": "Virgo",
+            "lord": "Mercury",
+            "symbol": "The Virgin",
+            "characteristics": "Earthy, Dual, South",
+            "lucky_gems": "Emerald",
+            "day_of_fast": "Wednesday",
+            "description": "People with Virgo rising tend to be analytical, critical, detail-oriented, practical, modest, health-conscious, service-oriented, perfectionist, and discriminating. You have a strong need to be useful and to improve things. Mercury rules Virgo, giving you excellent analytical and communication skills. You notice details that others miss and have high standards for yourself and others. Your practical approach to life makes you reliable and efficient. You may be drawn to health, healing, or service-oriented professions. Your tendency toward perfectionism can lead to self-criticism and worry.",
+            "spiritual_lesson": "Acceptance and Self-compassion",
+            "positive_traits": [
+                "Analytical",
+                "Practical",
+                "Reliable",
+                "Helpful"
+            ],
+            "negative_traits": [
+                "Critical",
+                "Perfectionist",
+                "Worrying",
+                "Fussy"
+            ]
+        },
+        "Libra": {
+            "sign": "Libra",
+            "lord": "Venus",
+            "symbol": "The Scales",
+            "characteristics": "Airy, Movable, West",
+            "lucky_gems": "Diamond",
+            "day_of_fast": "Friday",
+            "description": "People with Libra rising tend to be diplomatic, charming, graceful, harmonious, partnership-oriented, indecisive, peace-loving, artistic, and socially conscious. You have a strong need for balance, harmony, and partnership. Venus rules Libra, giving you an appreciation for beauty, art, and refined pleasures. You are naturally charming and diplomatic, able to see all sides of an issue. Relationships are extremely important to you, and you often define yourself through your partnerships. Your desire for harmony can make you avoid conflict, sometimes at the cost of your own needs.",
+            "spiritual_lesson": "Decisiveness and Self-assertion",
+            "positive_traits": [
+                "Diplomatic",
+                "Charming",
+                "Fair-minded",
+                "Social"
+            ],
+            "negative_traits": [
+                "Indecisive",
+                "People-pleasing",
+                "Superficial",
+                "Codependent"
+            ]
+        },
+        "Scorpio": {
+            "sign": "Scorpio",
+            "lord": "Mars",
+            "symbol": "The Scorpion",
+            "characteristics": "Watery, Fixed, North",
+            "lucky_gems": "Pearl",
+            "day_of_fast": "Tuesday",
+            "description": "People with Scorpio rising tend to be secretive, deep, withdrawn, mysterious, regenerate or degenerate, reserved, hard to understand, courageous, willful, persistent, stubborn in thought, creative, self-reliant, self-controlled (except perhaps with the passions), and silent. According to the spiritual astrologer Isabel Hickey, no unevolved soul is born with Scorpio rising. This is a powerhouse rising sign. It represents the battleground where the higher and lower selves must come to mortal combat. They must be aligned and the lower self eventually must die and give way to and obey the higher self, the God within. Physical, emotional, mental and spiritual levels are all involved. You appear calm on the surface, but you can be extremely emotional inside. 'Still waters run deep', as they say. You tend to be the silent type, always wanting to know others' motivations, but never disclosing your own. You love to play the detective or the ferret. You have great determination and strength, enough to overcome any adversary, even yourself. You need to overcome resentment, possessiveness and jealousy. There may be a fascination, preoccupation, interest and/or ability with the occult, death, sex or healing. You can be a devil or an angel, the eagle or the stinging scorpion. Mars and Pluto rule Scorpio so Mars and Pluto will be important in your chart.",
+            "spiritual_lesson": "Forgiveness",
+            "positive_traits": [
+                "Powerful",
+                "Committed",
+                "Intelligent",
+                "Imaginative"
+            ],
+            "negative_traits": [
+                "Jealous",
+                "Unforgiving",
+                "Inflexible",
+                "Secretive"
+            ]
+        },
+        "Sagittarius": {
+            "sign": "Sagittarius",
+            "lord": "Jupiter",
+            "symbol": "The Archer",
+            "characteristics": "Fiery, Dual, East",
+            "lucky_gems": "Yellow Sapphire",
+            "day_of_fast": "Thursday",
+            "description": "People with Sagittarius rising tend to be optimistic, adventurous, philosophical, honest, freedom-loving, enthusiastic, generous, restless, and outspoken. You have a strong need for exploration, whether physical, mental, or spiritual. Jupiter rules Sagittarius, bestowing upon you a naturally optimistic and expansive outlook on life. You seek the meaning and truth in all things. Travel, education, and philosophy appeal to you deeply. Your honesty is refreshing but can sometimes come across as tactless. You need freedom and space to explore and grow, and may resist anything that feels confining.",
+            "spiritual_lesson": "Responsibility and Commitment",
+            "positive_traits": [
+                "Optimistic",
+                "Adventurous",
+                "Honest",
+                "Philosophical"
+            ],
+            "negative_traits": [
+                "Restless",
+                "Tactless",
+                "Irresponsible",
+                "Overconfident"
+            ]
+        },
+        "Capricorn": {
+            "sign": "Capricorn",
+            "lord": "Saturn",
+            "symbol": "The Goat",
+            "characteristics": "Earthy, Movable, South",
+            "lucky_gems": "Blue Sapphire",
+            "day_of_fast": "Saturday",
+            "description": "People with Capricorn rising tend to be ambitious, disciplined, responsible, practical, serious, patient, reserved, cautious, and goal-oriented. You have a strong need for achievement and recognition through hard work. Saturn rules Capricorn, giving you a mature and responsible approach to life even from a young age. You understand that success comes through persistent effort and are willing to put in the work. Your practical nature helps you build solid foundations for the future. You may come across as serious or reserved, but you have a dry wit that reveals itself to those who know you well.",
+            "spiritual_lesson": "Flexibility and Emotional Expression",
+            "positive_traits": [
+                "Ambitious",
+                "Disciplined",
+                "Responsible",
+                "Patient"
+            ],
+            "negative_traits": [
+                "Pessimistic",
+                "Cold",
+                "Workaholic",
+                "Rigid"
+            ]
+        },
+        "Aquarius": {
+            "sign": "Aquarius",
+            "lord": "Saturn",
+            "symbol": "The Water Bearer",
+            "characteristics": "Airy, Fixed, West",
+            "lucky_gems": "Blue Sapphire",
+            "day_of_fast": "Saturday",
+            "description": "People with Aquarius rising tend to be independent, original, humanitarian, progressive, intellectual, unconventional, friendly, detached, and rebellious. You have a strong need for freedom and to be true to your unique self. Saturn and Uranus rule Aquarius, giving you both discipline and a desire to break free from convention. You march to the beat of your own drum and are often ahead of your time in your thinking. Humanitarian causes appeal to you, and you genuinely care about the welfare of humanity as a whole. Your friendships are important to you, though you may have difficulty with emotional intimacy.",
+            "spiritual_lesson": "Emotional Connection and Intimacy",
+            "positive_traits": [
+                "Independent",
+                "Original",
+                "Humanitarian",
+                "Intellectual"
+            ],
+            "negative_traits": [
+                "Detached",
+                "Stubborn",
+                "Rebellious",
+                "Aloof"
+            ]
+        },
+        "Pisces": {
+            "sign": "Pisces",
+            "lord": "Jupiter",
+            "symbol": "The Fish",
+            "characteristics": "Watery, Dual, North",
+            "lucky_gems": "Yellow Sapphire",
+            "day_of_fast": "Thursday",
+            "description": "People with Pisces rising tend to be compassionate, intuitive, imaginative, spiritual, sensitive, escapist, artistic, dreamy, and self-sacrificing. You have a strong need for transcendence and connection to something greater than yourself. Jupiter and Neptune rule Pisces, giving you both wisdom and a mystical, spiritual nature. You are highly sensitive to the energies and emotions around you, which can be both a gift and a challenge. Your imagination and creativity are boundless. You may be drawn to art, music, spirituality, or healing professions. Learning to set boundaries and stay grounded is important for your wellbeing.",
+            "spiritual_lesson": "Boundaries and Groundedness",
+            "positive_traits": [
+                "Compassionate",
+                "Intuitive",
+                "Artistic",
+                "Spiritual"
+            ],
+            "negative_traits": [
+                "Escapist",
+                "Oversensitive",
+                "Vague",
+                "Self-pitying"
+            ]
+        }
+    }
+}

@@ -1,6 +1,5 @@
-INFO:     Started server process [68456]
+INFO:     Started server process [71896]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-INFO:     127.0.0.1:51066 - "GET /astro/calculate?dob=07/07/1994&tob=17:10&lat=26.133&lon=80.917&place=Kanwar HTTP/1.1" 405 Method Not Allowed
-INFO:     127.0.0.1:51068 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=26.133&lon=80.917&place=Kanwar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51455 - "POST /astro/calculate/ascendant-report?dob=07/07/1994&tob=17:10&lat=26.133&lon=80.917 HTTP/1.1" 200 OK

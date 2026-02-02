@@ -292,3 +292,231 @@ def calculate_kundali_adhoc(
         "planets": planets,
         "dasha_balance": details["sun_moon_params"]["dasha_balance"]
     }
+
+# ============ CHART ENDPOINTS ============
+
+@router.get("/{profile_id}/charts")
+def get_all_charts(profile_id: str, db: Session = Depends(get_db)):
+    """
+    Get all horoscope charts: Lagna (D1), Moon, and Navamsha (D9).
+    Returns house-wise planet placement with descriptions.
+    """
+    profile = db.query(Profile).filter(Profile.id == profile_id).first()
+    if not profile:
+        raise HTTPException(status_code=404, detail="Profile not found")
+    
+    from kundali_app.services.astrology import AstrologyService
+    service = AstrologyService()
+    
+    return service.get_all_charts(
+        lat=profile.lat, lon=profile.lon,
+        year=profile.dob.year, month=profile.dob.month, day=profile.dob.day,
+        hour=profile.tob.hour, minute=profile.tob.minute, timezone=5.5
+    )
+
+@router.get("/{profile_id}/chart/{chart_type}")
+def get_chart(profile_id: str, chart_type: str, db: Session = Depends(get_db)):
+    """
+    Get specific chart: D1 (Lagna), Moon, or D9 (Navamsha).
+    """
+    profile = db.query(Profile).filter(Profile.id == profile_id).first()
+    if not profile:
+        raise HTTPException(status_code=404, detail="Profile not found")
+    
+    from kundali_app.services.astrology import AstrologyService
+    service = AstrologyService()
+    
+    chart_type_upper = chart_type.upper()
+    
+    if chart_type_upper in ["D1", "LAGNA"]:
+        return service.calculate_lagna_chart(
+            lat=profile.lat, lon=profile.lon,
+            year=profile.dob.year, month=profile.dob.month, day=profile.dob.day,
+            hour=profile.tob.hour, minute=profile.tob.minute, timezone=5.5
+        )
+    elif chart_type_upper in ["MOON", "CHANDRA"]:
+        return service.calculate_moon_chart(
+            lat=profile.lat, lon=profile.lon,
+            year=profile.dob.year, month=profile.dob.month, day=profile.dob.day,
+            hour=profile.tob.hour, minute=profile.tob.minute, timezone=5.5
+        )
+    elif chart_type_upper in ["D9", "NAVAMSHA"]:
+        return service.calculate_navamsha_chart(
+            lat=profile.lat, lon=profile.lon,
+            year=profile.dob.year, month=profile.dob.month, day=profile.dob.day,
+            hour=profile.tob.hour, minute=profile.tob.minute, timezone=5.5
+        )
+    else:
+        raise HTTPException(status_code=400, detail=f"Unknown chart type: {chart_type}. Valid: D1, Moon, D9")
+
+@router.post("/calculate/charts")
+def calculate_charts_adhoc(
+    dob: str,  # DD/MM/YYYY
+    tob: str,  # HH:MM
+    lat: float,
+    lon: float,
+    timezone: float = 5.5
+):
+    """
+    Calculate all charts without storing in database.
+    """
+    from datetime import datetime
+    from kundali_app.services.astrology import AstrologyService
+    
+    dob_parts = dob.split("/")
+    tob_parts = tob.split(":")
+    
+    day = int(dob_parts[0])
+    month = int(dob_parts[1])
+    year = int(dob_parts[2])
+    hour = int(tob_parts[0])
+    minute = int(tob_parts[1])
+    
+    service = AstrologyService()
+    
+    return service.get_all_charts(lat, lon, year, month, day, hour, minute, timezone)
+
+# ============ DASHA ENDPOINTS ============
+
+@router.get("/{profile_id}/dashas")
+def get_vimshottari_dasha(profile_id: str, db: Session = Depends(get_db)):
+    """
+    Get complete Vimshottari Dasha table with Mahadasha and Antardasha periods.
+    """
+    profile = db.query(Profile).filter(Profile.id == profile_id).first()
+    if not profile:
+        raise HTTPException(status_code=404, detail="Profile not found")
+    
+    from kundali_app.services.astrology import AstrologyService
+    service = AstrologyService()
+    
+    return service.calculate_vimshottari_dasha(
+        lat=profile.lat, lon=profile.lon,
+        year=profile.dob.year, month=profile.dob.month, day=profile.dob.day,
+        hour=profile.tob.hour, minute=profile.tob.minute, timezone=5.5
+    )
+
+@router.get("/{profile_id}/dasha/current")
+def get_current_dasha(profile_id: str, as_of_date: str = None, db: Session = Depends(get_db)):
+    """
+    Get current running Mahadasha and Antardasha with effects.
+    Optional: as_of_date in DD-MM-YYYY format to check dasha for a specific date.
+    """
+    profile = db.query(Profile).filter(Profile.id == profile_id).first()
+    if not profile:
+        raise HTTPException(status_code=404, detail="Profile not found")
+    
+    from kundali_app.services.astrology import AstrologyService
+    service = AstrologyService()
+    
+    return service.get_current_dasha(
+        lat=profile.lat, lon=profile.lon,
+        year=profile.dob.year, month=profile.dob.month, day=profile.dob.day,
+        hour=profile.tob.hour, minute=profile.tob.minute, timezone=5.5,
+        as_of_date=as_of_date
+    )
+
+@router.post("/calculate/dasha")
+def calculate_dasha_adhoc(
+    dob: str,  # DD/MM/YYYY
+    tob: str,  # HH:MM
+    lat: float,
+    lon: float,
+    timezone: float = 5.5
+):
+    """
+    Calculate Vimshottari Dasha without storing in database.
+    """
+    from datetime import datetime
+    from kundali_app.services.astrology import AstrologyService
+    
+    dob_parts = dob.split("/")
+    tob_parts = tob.split(":")
+    
+    day = int(dob_parts[0])
+    month = int(dob_parts[1])
+    year = int(dob_parts[2])
+    hour = int(tob_parts[0])
+    minute = int(tob_parts[1])
+    
+    service = AstrologyService()
+    
+    return service.calculate_vimshottari_dasha(lat, lon, year, month, day, hour, minute, timezone)
+
+@router.post("/calculate/dasha/current")
+def calculate_current_dasha_adhoc(
+    dob: str,  # DD/MM/YYYY
+    tob: str,  # HH:MM
+    lat: float,
+    lon: float,
+    timezone: float = 5.5,
+    as_of_date: str = None
+):
+    """
+    Get current dasha for given birth details.
+    """
+    from datetime import datetime
+    from kundali_app.services.astrology import AstrologyService
+    
+    dob_parts = dob.split("/")
+    tob_parts = tob.split(":")
+    
+    day = int(dob_parts[0])
+    month = int(dob_parts[1])
+    year = int(dob_parts[2])
+    hour = int(tob_parts[0])
+    minute = int(tob_parts[1])
+    
+    service = AstrologyService()
+    
+    return service.get_current_dasha(lat, lon, year, month, day, hour, minute, timezone, as_of_date)
+
+# ============ ASCENDANT REPORT ENDPOINTS ============
+
+@router.get("/{profile_id}/ascendant-report")
+def get_ascendant_report(profile_id: str, db: Session = Depends(get_db)):
+    """
+    Get detailed Ascendant Report including:
+    - Lord, Symbol, Characteristics
+    - Lucky Gems, Day of Fast
+    - Description, Spiritual Lesson
+    - Positive/Negative Traits
+    """
+    profile = db.query(Profile).filter(Profile.id == profile_id).first()
+    if not profile:
+        raise HTTPException(status_code=404, detail="Profile not found")
+    
+    from kundali_app.services.astrology import AstrologyService
+    service = AstrologyService()
+    
+    return service.get_ascendant_report(
+        lat=profile.lat, lon=profile.lon,
+        year=profile.dob.year, month=profile.dob.month, day=profile.dob.day,
+        hour=profile.tob.hour, minute=profile.tob.minute, timezone=5.5
+    )
+
+@router.post("/calculate/ascendant-report")
+def calculate_ascendant_report_adhoc(
+    dob: str,  # DD/MM/YYYY
+    tob: str,  # HH:MM
+    lat: float,
+    lon: float,
+    timezone: float = 5.5
+):
+    """
+    Calculate Ascendant Report without storing in database.
+    """
+    from kundali_app.services.astrology import AstrologyService
+    
+    dob_parts = dob.split("/")
+    tob_parts = tob.split(":")
+    
+    day = int(dob_parts[0])
+    month = int(dob_parts[1])
+    year = int(dob_parts[2])
+    hour = int(tob_parts[0])
+    minute = int(tob_parts[1])
+    
+    service = AstrologyService()
+    
+    return service.get_ascendant_report(lat, lon, year, month, day, hour, minute, timezone)

@@ -448,3 +448,533 @@ class AstrologyService:
         elif 120 <= md <= 218: return "Aquarius"
         elif 219 <= md <= 320: return "Pisces"
         return "Unknown"
+
+    # ============ CHART CALCULATIONS ============
+    
+    def calculate_lagna_chart(self, lat, lon, year, month, day, hour, minute, timezone=5.5):
+        """
+        Calculate Lagna Chart (D1) - planets placed in houses from Ascendant.
+        Returns house-wise planet placement for chart visualization.
+        """
+        planets = self._calculate_planets_full(lat, lon, year, month, day, hour, minute, timezone)
+        return self._create_chart_data(planets, "D1", "Lagna Chart (Birth Chart)")
+    
+    def calculate_moon_chart(self, lat, lon, year, month, day, hour, minute, timezone=5.5):
+        """
+        Calculate Moon Chart (Chandra Kundali) - houses counted from Moon sign.
+        """
+        planets = self._calculate_planets_full(lat, lon, year, month, day, hour, minute, timezone)
+        
+        # Find Moon's sign
+        moon = next((p for p in planets if p["planet"] == "Moon"), None)
+        if not moon:
+            return {"error": "Moon position not found"}
+        
+        moon_sign = moon["sign_id"]
+        
+        # Recalculate houses from Moon
+        for p in planets:
+            p["house"] = ((p["sign_id"] - moon_sign) % 12) + 1
+        
+        return self._create_chart_data(planets, "Moon", "Moon Chart (Chandra Kundali)")
+    
+    def calculate_navamsha_chart(self, lat, lon, year, month, day, hour, minute, timezone=5.5):
+        """
+        Calculate Navamsha Chart (D9) - each sign divided into 9 parts of 3°20'.
+        """
+        planets = self._calculate_planets_full(lat, lon, year, month, day, hour, minute, timezone)
+        
+        # Load navamsha mapping
+        chart_defs_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'chart_definitions.json')
+        with open(chart_defs_path, 'r') as f:
+            chart_defs = json.load(f)
+        navamsha_map = chart_defs["navamsha_mapping"]
+        
+        signs = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", 
+                 "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
+        
+        d9_planets = []
+        for p in planets:
+            degree_in_sign = p["degree_decimal"]
+            navamsha_num = int(degree_in_sign / (30/9))  # 0-8
+            
+            # Get D9 sign from mapping
+            d1_sign = p["sign"]
+            d9_sign = navamsha_map[d1_sign][navamsha_num]
+            d9_sign_id = signs.index(d9_sign) + 1
+            
+            d9_planets.append({
+                "planet": p["planet"],
+                "d1_sign": d1_sign,
+                "d9_sign": d9_sign,
+                "sign_id": d9_sign_id,
+                "is_retrograde": p["is_retrograde"],
+                "house": 0  # Will be calculated after
+            })
+        
+        # Calculate houses from D9 Ascendant
+        asc = next((p for p in d9_planets if p["planet"] == "Ascendant"), None)
+        if asc:
+            asc_sign = asc["sign_id"]
+            for p in d9_planets:
+                p["house"] = ((p["sign_id"] - asc_sign) % 12) + 1
+        
+        return self._create_chart_data(d9_planets, "D9", "Navamsha Chart (D9)")
+    
+    def _create_chart_data(self, planets, chart_code, chart_name):
+        """
+        Create chart data structure with house-wise planet placement.
+        Returns format suitable for North Indian style chart rendering.
+        """
+        # Initialize 12 houses
+        houses = {i: [] for i in range(1, 13)}
+        
+        # Place planets in houses
+        for p in planets:
+            house = p.get("house", 0)
+            if house >= 1 and house <= 12:
+                planet_abbr = self._get_planet_abbr(p["planet"])
+                houses[house].append({
+                    "planet": p["planet"],
+                    "abbr": planet_abbr,
+                    "retrograde": p.get("is_retrograde", False)
+                })
+        
+        # Create house display strings
+        house_display = {}
+        for h in range(1, 13):
+            planet_list = houses[h]
+            if planet_list:
+                display = " ".join([
+                    f"{p['abbr']}{'(R)' if p['retrograde'] else ''}" 
+                    for p in planet_list
+                ])
+            else:
+                display = ""
+            house_display[h] = display
+        
+        return {
+            "chart_code": chart_code,
+            "chart_name": chart_name,
+            "houses": houses,
+            "house_display": house_display,
+            "planets": planets
+        }
+    
+    def _get_planet_abbr(self, planet_name):
+        """Get abbreviated planet name for chart display."""
+        abbr_map = {
+            "Ascendant": "As",
+            "Sun": "Su",
+            "Moon": "Mo",
+            "Mars": "Ma",
+            "Mercury": "Me",
+            "Jupiter": "Ju",
+            "Venus": "Ve",
+            "Saturn": "Sa",
+            "Rahu": "Ra",
+            "Ketu": "Ke"
+        }
+        return abbr_map.get(planet_name, planet_name[:2])
+    
+    def get_all_charts(self, lat, lon, year, month, day, hour, minute, timezone=5.5):
+        """
+        Get all three main charts: Lagna, Moon, and Navamsha.
+        """
+        lagna = self.calculate_lagna_chart(lat, lon, year, month, day, hour, minute, timezone)
+        moon = self.calculate_moon_chart(lat, lon, year, month, day, hour, minute, timezone)
+        navamsha = self.calculate_navamsha_chart(lat, lon, year, month, day, hour, minute, timezone)
+        
+        # Load descriptions
+        chart_defs_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'chart_definitions.json')
+        with open(chart_defs_path, 'r') as f:
+            chart_defs = json.load(f)
+        
+        return {
+            "lagna_chart": {
+                **lagna,
+                "description": chart_defs["charts"]["lagna"]["description"]
+            },
+            "moon_chart": {
+                **moon,
+                "description": chart_defs["charts"]["moon"]["description"]
+            },
+            "navamsha_chart": {
+                **navamsha,
+                "description": chart_defs["charts"]["navamsha"]["description"]
+            }
+        }
+
+    # ============ VIMSHOTTARI DASHA CALCULATIONS ============
+    
+    def calculate_vimshottari_dasha(self, lat, lon, year, month, day, hour, minute, timezone=5.5):
+        """
+        Calculate complete Vimshottari Dasha with Mahadasha and Antardasha.
+        Returns full dasha table from birth.
+        """
+        # Load dasha data
+        dasha_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'dasha_data.json')
+        with open(dasha_path, 'r') as f:
+            dasha_data = json.load(f)
+        
+        vimshottari = dasha_data["vimshottari"]
+        lords = vimshottari["lords"]
+        periods = vimshottari["periods"]
+        
+        # Get Moon position to determine birth nakshatra
+        planets = self._calculate_planets_full(lat, lon, year, month, day, hour, minute, timezone)
+        moon = next((p for p in planets if p["planet"] == "Moon"), None)
+        
+        if not moon:
+            return {"error": "Moon position not found"}
+        
+        # Get nakshatra lord
+        nakshatra_name = moon["nakshatra"]
+        nakshatra_lords = vimshottari["nakshatra_lords"]
+        birth_lord = nakshatra_lords.get(nakshatra_name, "Ketu")
+        
+        # Calculate dasha balance at birth
+        moon_lon = moon["absolute_degree"]
+        nak_len = 360 / 27  # 13.333... degrees
+        degree_in_nakshatra = moon_lon % nak_len
+        elapsed_fraction = degree_in_nakshatra / nak_len
+        
+        birth_lord_period = periods[birth_lord]
+        balance_years = birth_lord_period * (1 - elapsed_fraction)
+        
+        # Birth date
+        birth_date = datetime(year, month, day, hour, minute)
+        
+        # Generate Mahadasha sequence starting from birth lord
+        start_idx = lords.index(birth_lord)
+        
+        mahadashas = []
+        current_date = birth_date
+        
+        # First mahadasha (partial)
+        first_md_end = self._add_years(current_date, balance_years)
+        mahadashas.append({
+            "lord": birth_lord,
+            "start_date": current_date.strftime("%d-%m-%Y %H:%M"),
+            "end_date": first_md_end.strftime("%d-%m-%Y %H:%M"),
+            "years": round(balance_years, 2),
+            "is_partial": True,
+            "antardashas": self._calculate_antardashas(birth_lord, current_date, balance_years, lords, periods)
+        })
+        current_date = first_md_end
+        
+        # Subsequent full mahadashas (complete 120-year cycle)
+        for i in range(1, 9):  # 8 more mahadashas
+            lord = lords[(start_idx + i) % 9]
+            years = periods[lord]
+            end_date = self._add_years(current_date, years)
+            
+            mahadashas.append({
+                "lord": lord,
+                "start_date": current_date.strftime("%d-%m-%Y %H:%M"),
+                "end_date": end_date.strftime("%d-%m-%Y %H:%M"),
+                "years": years,
+                "is_partial": False,
+                "antardashas": self._calculate_antardashas(lord, current_date, years, lords, periods)
+            })
+            current_date = end_date
+        
+        return {
+            "dasha_system": "Vimshottari",
+            "birth_nakshatra": nakshatra_name,
+            "birth_lord": birth_lord,
+            "balance_at_birth": f"{int(balance_years)}y {int((balance_years % 1) * 12)}m {int(((balance_years % 1) * 12 % 1) * 30)}d",
+            "mahadashas": mahadashas
+        }
+    
+    def _calculate_antardashas(self, mahadasha_lord, md_start, md_years, lords, periods):
+        """Calculate Antardashas (sub-periods) within a Mahadasha."""
+        antardashas = []
+        total_period_years = 120
+        
+        # Start from mahadasha lord
+        start_idx = lords.index(mahadasha_lord)
+        current_date = md_start
+        
+        for i in range(9):
+            ad_lord = lords[(start_idx + i) % 9]
+            # Antardasha duration = (MD years * AD lord years) / 120
+            ad_years = (md_years * periods[ad_lord]) / total_period_years
+            end_date = self._add_years(current_date, ad_years)
+            
+            antardashas.append({
+                "lord": ad_lord,
+                "start_date": current_date.strftime("%d-%m-%Y %H:%M"),
+                "end_date": end_date.strftime("%d-%m-%Y %H:%M"),
+                "duration_years": round(ad_years, 3)
+            })
+            current_date = end_date
+        
+        return antardashas
+    
+    def _add_years(self, dt, years):
+        """Add fractional years to a datetime."""
+        days = years * 365.25
+        return dt + timedelta(days=days)
+    
+    def get_current_dasha(self, lat, lon, year, month, day, hour, minute, timezone=5.5, as_of_date=None):
+        """
+        Get the current running Mahadasha, Antardasha, Pratyantardasha, and Sookshma.
+        """
+        if as_of_date is None:
+            as_of_date = datetime.now()
+        elif isinstance(as_of_date, str):
+            as_of_date = datetime.strptime(as_of_date, "%d-%m-%Y")
+        
+        # Load dasha config
+        dasha_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'dasha_data.json')
+        with open(dasha_path, 'r') as f:
+            dasha_data = json.load(f)
+        
+        vimshottari = dasha_data["vimshottari"]
+        lords = vimshottari["lords"]
+        periods = vimshottari["periods"]
+        effects = dasha_data.get("dasha_effects", {})
+        
+        # Get birth nakshatra lord and balance
+        planets = self._calculate_planets_full(lat, lon, year, month, day, hour, minute, timezone)
+        moon = next((p for p in planets if p["planet"] == "Moon"), None)
+        
+        if not moon:
+            return {"error": "Moon position not found"}
+        
+        nakshatra_name = moon["nakshatra"]
+        nakshatra_lords = vimshottari["nakshatra_lords"]
+        birth_lord = nakshatra_lords.get(nakshatra_name, "Ketu")
+        
+        # Calculate balance
+        moon_lon = moon["absolute_degree"]
+        nak_len = 360 / 27
+        degree_in_nakshatra = moon_lon % nak_len
+        elapsed_fraction = degree_in_nakshatra / nak_len
+        
+        birth_date = datetime(year, month, day, hour, minute)
+        balance_years = periods[birth_lord] * (1 - elapsed_fraction)
+        
+        # Find current Mahadasha
+        start_idx = lords.index(birth_lord)
+        current_date = birth_date
+        
+        current_md = None
+        md_years = 0
+        
+        # First check partial mahadasha
+        first_md_end = self._add_years(current_date, balance_years)
+        if current_date <= as_of_date <= first_md_end:
+            current_md = {"lord": birth_lord, "start": current_date, "end": first_md_end, "years": balance_years}
+        else:
+            current_date = first_md_end
+            for i in range(1, 9):
+                lord = lords[(start_idx + i) % 9]
+                years = periods[lord]
+                end_date = self._add_years(current_date, years)
+                if current_date <= as_of_date <= end_date:
+                    current_md = {"lord": lord, "start": current_date, "end": end_date, "years": years}
+                    break
+                current_date = end_date
+        
+        if not current_md:
+            return {"message": "Date is outside calculated dasha range"}
+        
+        # Find Antardasha within Mahadasha
+        md_lord = current_md["lord"]
+        md_start = current_md["start"]
+        md_years = current_md["years"]
+        md_lord_idx = lords.index(md_lord)
+        
+        current_ad = None
+        ad_start = md_start
+        
+        for i in range(9):
+            ad_lord = lords[(md_lord_idx + i) % 9]
+            ad_years = (md_years * periods[ad_lord]) / 120
+            ad_end = self._add_years(ad_start, ad_years)
+            
+            if ad_start <= as_of_date <= ad_end:
+                current_ad = {"lord": ad_lord, "start": ad_start, "end": ad_end, "years": ad_years}
+                break
+            ad_start = ad_end
+        
+        # Find Pratyantardasha within Antardasha
+        current_prad = None
+        if current_ad:
+            ad_lord = current_ad["lord"]
+            ad_lord_idx = lords.index(ad_lord)
+            prad_start = current_ad["start"]
+            
+            for i in range(9):
+                prad_lord = lords[(ad_lord_idx + i) % 9]
+                prad_years = (current_ad["years"] * periods[prad_lord]) / 120
+                prad_end = self._add_years(prad_start, prad_years)
+                
+                if prad_start <= as_of_date <= prad_end:
+                    current_prad = {"lord": prad_lord, "start": prad_start, "end": prad_end, "years": prad_years}
+                    break
+                prad_start = prad_end
+        
+        # Find Sookshma within Pratyantardasha
+        current_sookshm = None
+        if current_prad:
+            prad_lord = current_prad["lord"]
+            prad_lord_idx = lords.index(prad_lord)
+            sookshm_start = current_prad["start"]
+            
+            for i in range(9):
+                sookshm_lord = lords[(prad_lord_idx + i) % 9]
+                sookshm_years = (current_prad["years"] * periods[sookshm_lord]) / 120
+                sookshm_end = self._add_years(sookshm_start, sookshm_years)
+                
+                if sookshm_start <= as_of_date <= sookshm_end:
+                    current_sookshm = {"lord": sookshm_lord, "start": sookshm_start, "end": sookshm_end, "years": sookshm_years}
+                    break
+                sookshm_start = sookshm_end
+        
+        # Format response
+        result = {
+            "as_of_date": as_of_date.strftime("%d-%m-%Y"),
+            "note": "All dates indicate dasha end date",
+            "mahadasha": {
+                "lord": current_md["lord"],
+                "start_date": current_md["start"].strftime("%d-%m-%Y %H:%M"),
+                "end_date": current_md["end"].strftime("%d-%m-%Y %H:%M"),
+                "effects": effects.get(current_md["lord"], {})
+            }
+        }
+        
+        if current_ad:
+            result["antardasha"] = {
+                "lord": current_ad["lord"],
+                "start_date": current_ad["start"].strftime("%d-%m-%Y %H:%M"),
+                "end_date": current_ad["end"].strftime("%d-%m-%Y %H:%M"),
+                "effects": effects.get(current_ad["lord"], {})
+            }
+        
+        if current_prad:
+            result["pratyantardasha"] = {
+                "lord": current_prad["lord"],
+                "start_date": current_prad["start"].strftime("%d-%m-%Y %H:%M"),
+                "end_date": current_prad["end"].strftime("%d-%m-%Y %H:%M")
+            }
+        
+        if current_sookshm:
+            result["sookshma_dasha"] = {
+                "lord": current_sookshm["lord"],
+                "start_date": current_sookshm["start"].strftime("%d-%m-%Y %H:%M"),
+                "end_date": current_sookshm["end"].strftime("%d-%m-%Y %H:%M")
+            }
+        
+        # Combined period string
+        combined = current_md["lord"]
+        if current_ad:
+            combined += f"-{current_ad['lord']}"
+        if current_prad:
+            combined += f"-{current_prad['lord']}"
+        if current_sookshm:
+            combined += f"-{current_sookshm['lord']}"
+        
+        result["combined_period"] = combined
+        
+        return result
+    
+    def calculate_dasha_periods_deep(self, lat, lon, year, month, day, hour, minute, timezone=5.5, depth=3):
+        """
+        Calculate Vimshottari Dasha up to specified depth.
+        depth=1: Mahadasha only
+        depth=2: Mahadasha + Antardasha
+        depth=3: + Pratyantardasha
+        depth=4: + Sookshma
+        """
+        dasha = self.calculate_vimshottari_dasha(lat, lon, year, month, day, hour, minute, timezone)
+        
+        if "error" in dasha or depth <= 2:
+            return dasha
+        
+        # Load config
+        dasha_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'dasha_data.json')
+        with open(dasha_path, 'r') as f:
+            dasha_data = json.load(f)
+        
+        lords = dasha_data["vimshottari"]["lords"]
+        periods = dasha_data["vimshottari"]["periods"]
+        
+        # Add Pratyantardasha to each Antardasha
+        if depth >= 3:
+            for md in dasha["mahadashas"]:
+                for ad in md["antardashas"]:
+                    ad["pratyantardashas"] = self._calculate_sub_dashas(
+                        ad["lord"], 
+                        datetime.strptime(ad["start_date"], "%d-%m-%Y %H:%M"),
+                        ad["duration_years"],
+                        lords, periods
+                    )
+                    
+                    # Add Sookshma if depth=4
+                    if depth >= 4:
+                        for prad in ad["pratyantardashas"]:
+                            prad["sookshmas"] = self._calculate_sub_dashas(
+                                prad["lord"],
+                                datetime.strptime(prad["start_date"], "%d-%m-%Y %H:%M"),
+                                prad["duration_years"],
+                                lords, periods
+                            )
+        
+        return dasha
+    
+    def _calculate_sub_dashas(self, parent_lord, start_date, parent_years, lords, periods):
+        """Calculate sub-periods for any dasha level."""
+        sub_dashas = []
+        lord_idx = lords.index(parent_lord)
+        current_date = start_date
+        
+        for i in range(9):
+            sub_lord = lords[(lord_idx + i) % 9]
+            sub_years = (parent_years * periods[sub_lord]) / 120
+            end_date = self._add_years(current_date, sub_years)
+            
+            sub_dashas.append({
+                "lord": sub_lord,
+                "start_date": current_date.strftime("%d-%m-%Y %H:%M"),
+                "end_date": end_date.strftime("%d-%m-%Y %H:%M"),
+                "duration_years": round(sub_years, 6)
+            })
+            current_date = end_date
+        
+        return sub_dashas
+
+    # ============ ASCENDANT REPORT ============
+    
+    def get_ascendant_report(self, lat, lon, year, month, day, hour, minute, timezone=5.5):
+        """
+        Get detailed Ascendant Report based on rising sign.
+        """
+        # Calculate ascendant
+        planets = self._calculate_planets_full(lat, lon, year, month, day, hour, minute, timezone)
+        ascendant = next((p for p in planets if p["planet"] == "Ascendant"), None)
+        
+        if not ascendant:
+            return {"error": "Ascendant calculation failed"}
+        
+        asc_sign = ascendant["sign"]
+        
+        # Load ascendant reports
+        report_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'ascendant_reports.json')
+        with open(report_path, 'r') as f:
+            reports = json.load(f)
+        
+        report = reports["ascendant_reports"].get(asc_sign, {})
+        
+        if not report:
+            return {"error": f"Report not found for {asc_sign}"}
+        
+        return {
+            "ascendant": asc_sign,
+            "degree": ascendant.get("degree_in_sign", ascendant.get("absolute_degree", 0)),
+            "nakshatra": ascendant.get("nakshatra", "Unknown"),
+            "nakshatra_pada": ascendant.get("nakshatra_pada", 1),
+            "report": report
+        }

@@ -1,0 +1,112 @@
+{
+    "vimshottari": {
+        "name": "Vimshottari Dasha",
+        "total_years": 120,
+        "description": "Vimshottari Dasha is the most widely used dasha system in Vedic astrology. It is based on the Moon's Nakshatra at birth and follows a 120-year cycle. Each planet rules a specific period (Mahadasha), which is further divided into sub-periods (Antardasha).",
+        "lords": [
+            "Ketu",
+            "Venus",
+            "Sun",
+            "Moon",
+            "Mars",
+            "Rahu",
+            "Jupiter",
+            "Saturn",
+            "Mercury"
+        ],
+        "periods": {
+            "Ketu": 7,
+            "Venus": 20,
+            "Sun": 6,
+            "Moon": 10,
+            "Mars": 7,
+            "Rahu": 18,
+            "Jupiter": 16,
+            "Saturn": 19,
+            "Mercury": 17
+        },
+        "nakshatra_lords": {
+            "Ashwini": "Ketu",
+            "Bharani": "Venus",
+            "Krittika": "Sun",
+            "Rohini": "Moon",
+            "Mrigashira": "Mars",
+            "Ardra": "Rahu",
+            "Punarvasu": "Jupiter",
+            "Pushya": "Saturn",
+            "Ashlesha": "Mercury",
+            "Magha": "Ketu",
+            "Purva Phalguni": "Venus",
+            "Uttara Phalguni": "Sun",
+            "Hasta": "Moon",
+            "Chitra": "Mars",
+            "Swati": "Rahu",
+            "Vishakha": "Jupiter",
+            "Anuradha": "Saturn",
+            "Jyeshtha": "Mercury",
+            "Mula": "Ketu",
+            "Purva Ashadha": "Venus",
+            "Uttara Ashadha": "Sun",
+            "Shravana": "Moon",
+            "Dhanishta": "Mars",
+            "Shatabhisha": "Rahu",
+            "Purva Bhadrapada": "Jupiter",
+            "Uttara Bhadrapada": "Saturn",
+            "Revati": "Mercury"
+        },
+        "level_names": {
+            "1": "Mahadasha",
+            "2": "Antardasha",
+            "3": "Pratyantardasha",
+            "4": "Sookshma",
+            "5": "Prana"
+        }
+    },
+    "dasha_effects": {
+        "Ketu": {
+            "general": "Spiritual awakening, detachment, sudden changes, research, occult interests",
+            "positive": "Moksha, enlightenment, healing abilities, past life wisdom",
+            "negative": "Confusion, losses, health issues, accidents, separation"
+        },
+        "Venus": {
+            "general": "Love, marriage, luxury, arts, vehicles, comforts, wealth",
+            "positive": "Romance, creativity, financial gains, beautiful possessions",
+            "negative": "Overindulgence, relationship issues, extravagance"
+        },
+        "Sun": {
+            "general": "Authority, government, father, leadership, health, vitality",
+            "positive": "Recognition, promotion, government favor, confidence",
+            "negative": "Ego clashes, health issues, conflicts with authority"
+        },
+        "Moon": {
+            "general": "Mind, emotions, mother, public, travel, liquids, nursing",
+            "positive": "Mental peace, public popularity, emotional fulfillment",
+            "negative": "Mental stress, mood swings, domestic issues"
+        },
+        "Mars": {
+            "general": "Energy, courage, property, siblings, surgery, accidents",
+            "positive": "Victory over enemies, property gains, courage, sports",
+            "negative": "Anger, accidents, surgery, conflicts, blood disorders"
+        },
+        "Rahu": {
+            "general": "Foreign travel, unconventional, technology, obsessions, illusions",
+            "positive": "Foreign connections, technology success, material gains",
+            "negative": "Deception, addiction, scandals, mental confusion"
+        },
+        "Jupiter": {
+            "general": "Wisdom, children, religion, wealth, teachers, expansion",
+            "positive": "Spiritual growth, children, wealth, higher education",
+            "negative": "Weight gain, liver issues, over-optimism, legal issues"
+        },
+        "Saturn": {
+            "general": "Discipline, delays, karma, hard work, longevity, servants",
+            "positive": "Recognition through hard work, discipline, property",
+            "negative": "Delays, obstacles, chronic illness, depression, losses"
+        },
+        "Mercury": {
+            "general": "Intelligence, communication, business, education, writing",
+            "positive": "Business success, education, communication skills",
+            "negative": "Nervous disorders, speech issues, business losses"
+        }
+    }
+}

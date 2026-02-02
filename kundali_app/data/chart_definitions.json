@@ -1,0 +1,233 @@
+{
+    "charts": {
+        "lagna": {
+            "name": "Lagna Chart (Birth Chart)",
+            "code": "D1",
+            "description": "Ascendant or Lagna is the degree of the sign which is rising on the eastern horizon at the time of birth. The Lagna is the most influential and important sign within the natal or lagna chart. This sign will be considered the first house of the horoscope, and the enumeration of the other houses follows in sequence through the rest of the signs of the zodiac. In this way, the Lagna does not only delineate the rising sign, but also all the other houses in the chart."
+        },
+        "moon": {
+            "name": "Moon Chart (Chandra Kundali)",
+            "code": "Moon",
+            "description": "Moon Chart is an important tool of prediction and the results of planetary combinations are more prominent when the yogas or certain combinations happen in both Moon and Lagna Chart. In Moon Chart, the sign where Moon is placed becomes the first house and other houses are counted from there."
+        },
+        "navamsha": {
+            "name": "Navamsha Chart (D9)",
+            "code": "D9",
+            "description": "Navmansha Chart is the most important divisional chart. Navmansha means nine parts of a particular Rashi in which each Amsa consists of 3 degrees and 20 minutes. It is used to analyze the strength of planets, marriage, and spiritual progress. A planet well-placed in D9 will give better results even if weak in D1."
+        },
+        "hora": {
+            "name": "Hora Chart",
+            "code": "D2",
+            "description": "Hora Chart divides each sign into two parts of 15 degrees each. It is used to analyze wealth and financial matters."
+        },
+        "drekkana": {
+            "name": "Drekkana Chart",
+            "code": "D3",
+            "description": "Drekkana Chart divides each sign into three parts of 10 degrees each. It is used to analyze siblings and courage."
+        },
+        "chaturthamsha": {
+            "name": "Chaturthamsha Chart",
+            "code": "D4",
+            "description": "Chaturthamsha Chart divides each sign into four parts of 7.5 degrees each. It is used to analyze property, fortune, and fixed assets."
+        },
+        "saptamsha": {
+            "name": "Saptamsha Chart",
+            "code": "D7",
+            "description": "Saptamsha Chart divides each sign into seven parts. It is used to analyze children and progeny."
+        },
+        "dashamsha": {
+            "name": "Dashamsha Chart",
+            "code": "D10",
+            "description": "Dashamsha Chart divides each sign into ten parts of 3 degrees each. It is used to analyze career, profession, and success in life."
+        },
+        "dwadashamsha": {
+            "name": "Dwadashamsha Chart",
+            "code": "D12",
+            "description": "Dwadashamsha Chart divides each sign into twelve parts of 2.5 degrees each. It is used to analyze parents and ancestral lineage."
+        }
+    },
+    "houses": {
+        "1": {
+            "name": "First House (Lagna)",
+            "signifies": "Self, personality, physical body, health, vitality"
+        },
+        "2": {
+            "name": "Second House (Dhana)",
+            "signifies": "Wealth, family, speech, food, right eye"
+        },
+        "3": {
+            "name": "Third House (Sahaj)",
+            "signifies": "Siblings, courage, short journeys, communication"
+        },
+        "4": {
+            "name": "Fourth House (Sukha)",
+            "signifies": "Mother, home, vehicles, comforts, education"
+        },
+        "5": {
+            "name": "Fifth House (Putra)",
+            "signifies": "Children, intelligence, creativity, romance, speculation"
+        },
+        "6": {
+            "name": "Sixth House (Ripu)",
+            "signifies": "Enemies, diseases, debts, service, daily work"
+        },
+        "7": {
+            "name": "Seventh House (Kalatra)",
+            "signifies": "Marriage, partnerships, business, public dealings"
+        },
+        "8": {
+            "name": "Eighth House (Ayush)",
+            "signifies": "Longevity, obstacles, inheritance, occult, transformation"
+        },
+        "9": {
+            "name": "Ninth House (Dharma)",
+            "signifies": "Father, fortune, religion, higher education, long journeys"
+        },
+        "10": {
+            "name": "Tenth House (Karma)",
+            "signifies": "Career, profession, reputation, authority, government"
+        },
+        "11": {
+            "name": "Eleventh House (Labha)",
+            "signifies": "Gains, income, friends, elder siblings, wishes"
+        },
+        "12": {
+            "name": "Twelfth House (Vyaya)",
+            "signifies": "Losses, expenses, foreign lands, spirituality, liberation"
+        }
+    },
+    "navamsha_mapping": {
+        "Aries": [
+            "Aries",
+            "Taurus",
+            "Gemini",
+            "Cancer",
+            "Leo",
+            "Virgo",
+            "Libra",
+            "Scorpio",
+            "Sagittarius"
+        ],
+        "Taurus": [
+            "Capricorn",
+            "Aquarius",
+            "Pisces",
+            "Aries",
+            "Taurus",
+            "Gemini",
+            "Cancer",
+            "Leo",
+            "Virgo"
+        ],
+        "Gemini": [
+            "Libra",
+            "Scorpio",
+            "Sagittarius",
+            "Capricorn",
+            "Aquarius",
+            "Pisces",
+            "Aries",
+            "Taurus",
+            "Gemini"
+        ],
+        "Cancer": [
+            "Cancer",
+            "Leo",
+            "Virgo",
+            "Libra",
+            "Scorpio",
+            "Sagittarius",
+            "Capricorn",
+            "Aquarius",
+            "Pisces"
+        ],
+        "Leo": [
+            "Aries",
+            "Taurus",
+            "Gemini",
+            "Cancer",
+            "Leo",
+            "Virgo",
+            "Libra",
+            "Scorpio",
+            "Sagittarius"
+        ],
+        "Virgo": [
+            "Capricorn",
+            "Aquarius",
+            "Pisces",
+            "Aries",
+            "Taurus",
+            "Gemini",
+            "Cancer",
+            "Leo",
+            "Virgo"
+        ],
+        "Libra": [
+            "Libra",
+            "Scorpio",
+            "Sagittarius",
+            "Capricorn",
+            "Aquarius",
+            "Pisces",
+            "Aries",
+            "Taurus",
+            "Gemini"
+        ],
+        "Scorpio": [
+            "Cancer",
+            "Leo",
+            "Virgo",
+            "Libra",
+            "Scorpio",
+            "Sagittarius",
+            "Capricorn",
+            "Aquarius",
+            "Pisces"
+        ],
+        "Sagittarius": [
+            "Aries",
+            "Taurus",
+            "Gemini",
+            "Cancer",
+            "Leo",
+            "Virgo",
+            "Libra",
+            "Scorpio",
+            "Sagittarius"
+        ],
+        "Capricorn": [
+            "Capricorn",
+            "Aquarius",
+            "Pisces",
+            "Aries",
+            "Taurus",
+            "Gemini",
+            "Cancer",
+            "Leo",
+            "Virgo"
+        ],
+        "Aquarius": [
+            "Libra",
+            "Scorpio",
+            "Sagittarius",
+            "Capricorn",
+            "Aquarius",
+            "Pisces",
+            "Aries",
+            "Taurus",
+            "Gemini"
+        ],
+        "Pisces": [
+            "Cancer",
+            "Leo",
+            "Virgo",
+            "Libra",
+            "Scorpio",
+            "Sagittarius",
+            "Capricorn",
+            "Aquarius",
+            "Pisces"
+        ]
+    }
+}
