@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.DS_Store
+.env
+venv/
+output/
+debug_log.txt
+*.pdf
+temp_*.pdf

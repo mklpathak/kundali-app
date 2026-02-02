@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+ephem
+reportlab
+pypdf
+ephem
+reportlab
+pypdf
+pymupdf
