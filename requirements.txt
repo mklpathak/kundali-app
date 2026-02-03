@@ -8,3 +8,4 @@ ephem
 reportlab
 pypdf
 pymupdf
+reportlab

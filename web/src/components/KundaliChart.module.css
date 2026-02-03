@@ -1,0 +1,57 @@
+.chartCard {
+    background: linear-gradient(135deg, rgba(26, 10, 46, 0.95) 0%, rgba(10, 10, 26, 0.98) 100%) !important;
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+    border-radius: 12px !important;
+}
+
+.chartCard :global(.ant-card-head) {
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.chartCard :global(.ant-card-body) {
+    padding: 16px !important;
+}
+
+.chartContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+}
+
+.chartSvg {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+}
+
+.houseNumber {
+    font-size: 12px;
+    font-weight: 500;
+    fill: #5D4037;
+}
+
+.planetText {
+    font-size: 13px;
+    font-weight: 700;
+    fill: #37474F;
+}
+
+.chartFooter {
+    text-align: center;
+    padding-top: 12px;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    margin-top: 12px;
+    color: #E8E6E3;
+    font-size: 0.95rem;
+}
+
+/* Legacy styles - kept for compatibility */
+.housePath {
+    cursor: pointer;
+    transition: fill 0.2s ease;
+}
+
+.housePath:hover {
+    fill: rgba(212, 175, 55, 0.2);
+}

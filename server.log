@@ -73,3 +73,1306 @@ INFO:     127.0.0.1:53267 - "POST /astro/calculate/dasha/current?dob=07/07/1994&
 INFO:     127.0.0.1:53272 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=26.4499&lon=80.3319 HTTP/1.1" 200 OK
 INFO:     127.0.0.1:53272 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=26.4499&lon=80.3319 HTTP/1.1" 200 OK
 INFO:     127.0.0.1:53272 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=26.4499&lon=80.3319&place=Kanpur HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53700 - "POST /astro/calculate?dob=1994/07/07&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/mukulpathak/kundali/kundali_app/api/routes/astro.py", line 216, in calculate_kundali_adhoc
+    details = service.calculate_extended_birth_details(
+  File "/Users/mukulpathak/kundali/kundali_app/services/astrology.py", line 186, in calculate_extended_birth_details
+    local_dt = datetime(year, month, day, hour, minute)
+ValueError: day is out of range for month
+INFO:     127.0.0.1:53701 - "POST /astro/calculate?dob=1994/07/07&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/mukulpathak/kundali/kundali_app/api/routes/astro.py", line 216, in calculate_kundali_adhoc
+    details = service.calculate_extended_birth_details(
+  File "/Users/mukulpathak/kundali/kundali_app/services/astrology.py", line 186, in calculate_extended_birth_details
+    local_dt = datetime(year, month, day, hour, minute)
+ValueError: day is out of range for month
+INFO:     127.0.0.1:53712 - "POST /astro/calculate?dob=1994/07/07&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/mukulpathak/kundali/kundali_app/api/routes/astro.py", line 216, in calculate_kundali_adhoc
+    details = service.calculate_extended_birth_details(
+  File "/Users/mukulpathak/kundali/kundali_app/services/astrology.py", line 186, in calculate_extended_birth_details
+    local_dt = datetime(year, month, day, hour, minute)
+ValueError: day is out of range for month
+INFO:     127.0.0.1:53713 - "POST /astro/calculate?dob=1994/07/07&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/mukulpathak/kundali/kundali_app/api/routes/astro.py", line 216, in calculate_kundali_adhoc
+    details = service.calculate_extended_birth_details(
+  File "/Users/mukulpathak/kundali/kundali_app/services/astrology.py", line 186, in calculate_extended_birth_details
+    local_dt = datetime(year, month, day, hour, minute)
+ValueError: day is out of range for month
+INFO:     127.0.0.1:53727 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53727 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53773 - "POST /astro/calculate?dob=1994/07/07&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/mukulpathak/kundali/kundali_app/api/routes/astro.py", line 216, in calculate_kundali_adhoc
+    details = service.calculate_extended_birth_details(
+  File "/Users/mukulpathak/kundali/kundali_app/services/astrology.py", line 186, in calculate_extended_birth_details
+    local_dt = datetime(year, month, day, hour, minute)
+ValueError: day is out of range for month
+INFO:     127.0.0.1:53774 - "POST /astro/calculate?dob=1994/07/07&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/mukulpathak/kundali/kundali_app/api/routes/astro.py", line 216, in calculate_kundali_adhoc
+    details = service.calculate_extended_birth_details(
+  File "/Users/mukulpathak/kundali/kundali_app/services/astrology.py", line 186, in calculate_extended_birth_details
+    local_dt = datetime(year, month, day, hour, minute)
+ValueError: day is out of range for month
+INFO:     127.0.0.1:53869 - "POST /astro/calculate?dob=1994/07/07&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/mukulpathak/kundali/kundali_app/api/routes/astro.py", line 216, in calculate_kundali_adhoc
+    details = service.calculate_extended_birth_details(
+  File "/Users/mukulpathak/kundali/kundali_app/services/astrology.py", line 186, in calculate_extended_birth_details
+    local_dt = datetime(year, month, day, hour, minute)
+ValueError: day is out of range for month
+INFO:     127.0.0.1:53870 - "POST /astro/calculate?dob=1994/07/07&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/mukulpathak/kundali/kundali_app/api/routes/astro.py", line 216, in calculate_kundali_adhoc
+    details = service.calculate_extended_birth_details(
+  File "/Users/mukulpathak/kundali/kundali_app/services/astrology.py", line 186, in calculate_extended_birth_details
+    local_dt = datetime(year, month, day, hour, minute)
+ValueError: day is out of range for month
+INFO:     127.0.0.1:53897 - "POST /astro/calculate?dob=1994/07/07&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/mukulpathak/kundali/kundali_app/api/routes/astro.py", line 216, in calculate_kundali_adhoc
+    details = service.calculate_extended_birth_details(
+  File "/Users/mukulpathak/kundali/kundali_app/services/astrology.py", line 186, in calculate_extended_birth_details
+    local_dt = datetime(year, month, day, hour, minute)
+ValueError: day is out of range for month
+INFO:     127.0.0.1:53898 - "POST /astro/calculate?dob=1994/07/07&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/mukulpathak/kundali/kundali_app/api/routes/astro.py", line 216, in calculate_kundali_adhoc
+    details = service.calculate_extended_birth_details(
+  File "/Users/mukulpathak/kundali/kundali_app/services/astrology.py", line 186, in calculate_extended_birth_details
+    local_dt = datetime(year, month, day, hour, minute)
+ValueError: day is out of range for month
+INFO:     127.0.0.1:53925 - "POST /astro/calculate?dob=1994/07/07&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/mukulpathak/kundali/kundali_app/api/routes/astro.py", line 216, in calculate_kundali_adhoc
+    details = service.calculate_extended_birth_details(
+  File "/Users/mukulpathak/kundali/kundali_app/services/astrology.py", line 186, in calculate_extended_birth_details
+    local_dt = datetime(year, month, day, hour, minute)
+ValueError: day is out of range for month
+INFO:     127.0.0.1:53926 - "POST /astro/calculate?dob=1994/07/07&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/mukulpathak/kundali/kundali_app/api/routes/astro.py", line 216, in calculate_kundali_adhoc
+    details = service.calculate_extended_birth_details(
+  File "/Users/mukulpathak/kundali/kundali_app/services/astrology.py", line 186, in calculate_extended_birth_details
+    local_dt = datetime(year, month, day, hour, minute)
+ValueError: day is out of range for month
+INFO:     127.0.0.1:53969 - "POST /astro/calculate?dob=1994/07/07&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/mukulpathak/kundali/kundali_app/api/routes/astro.py", line 216, in calculate_kundali_adhoc
+    details = service.calculate_extended_birth_details(
+  File "/Users/mukulpathak/kundali/kundali_app/services/astrology.py", line 186, in calculate_extended_birth_details
+    local_dt = datetime(year, month, day, hour, minute)
+ValueError: day is out of range for month
+INFO:     127.0.0.1:53970 - "POST /astro/calculate?dob=1994/07/07&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/mukulpathak/kundali/kundali_app/api/routes/astro.py", line 216, in calculate_kundali_adhoc
+    details = service.calculate_extended_birth_details(
+  File "/Users/mukulpathak/kundali/kundali_app/services/astrology.py", line 186, in calculate_extended_birth_details
+    local_dt = datetime(year, month, day, hour, minute)
+ValueError: day is out of range for month
+INFO:     127.0.0.1:53977 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54006 - "POST /astro/calculate?dob=1994/07/07&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/mukulpathak/kundali/kundali_app/api/routes/astro.py", line 216, in calculate_kundali_adhoc
+    details = service.calculate_extended_birth_details(
+  File "/Users/mukulpathak/kundali/kundali_app/services/astrology.py", line 186, in calculate_extended_birth_details
+    local_dt = datetime(year, month, day, hour, minute)
+ValueError: day is out of range for month
+INFO:     127.0.0.1:54007 - "POST /astro/calculate?dob=1994/07/07&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/mukulpathak/kundali/kundali_app/api/routes/astro.py", line 216, in calculate_kundali_adhoc
+    details = service.calculate_extended_birth_details(
+  File "/Users/mukulpathak/kundali/kundali_app/services/astrology.py", line 186, in calculate_extended_birth_details
+    local_dt = datetime(year, month, day, hour, minute)
+ValueError: day is out of range for month
+INFO:     127.0.0.1:54058 - "POST /astro/calculate?dob=1994/07/07&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/mukulpathak/kundali/kundali_app/api/routes/astro.py", line 216, in calculate_kundali_adhoc
+    details = service.calculate_extended_birth_details(
+  File "/Users/mukulpathak/kundali/kundali_app/services/astrology.py", line 186, in calculate_extended_birth_details
+    local_dt = datetime(year, month, day, hour, minute)
+ValueError: day is out of range for month
+INFO:     127.0.0.1:54059 - "POST /astro/calculate?dob=1994/07/07&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/mukulpathak/kundali/kundali_app/api/routes/astro.py", line 216, in calculate_kundali_adhoc
+    details = service.calculate_extended_birth_details(
+  File "/Users/mukulpathak/kundali/kundali_app/services/astrology.py", line 186, in calculate_extended_birth_details
+    local_dt = datetime(year, month, day, hour, minute)
+ValueError: day is out of range for month
+INFO:     127.0.0.1:54193 - "POST /astro/calculate?dob=1994/07/07&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/mukulpathak/kundali/kundali_app/api/routes/astro.py", line 216, in calculate_kundali_adhoc
+    details = service.calculate_extended_birth_details(
+  File "/Users/mukulpathak/kundali/kundali_app/services/astrology.py", line 186, in calculate_extended_birth_details
+    local_dt = datetime(year, month, day, hour, minute)
+ValueError: day is out of range for month
+INFO:     127.0.0.1:54194 - "POST /astro/calculate?dob=1994/07/07&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/mukulpathak/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/mukulpathak/kundali/kundali_app/api/routes/astro.py", line 216, in calculate_kundali_adhoc
+    details = service.calculate_extended_birth_details(
+  File "/Users/mukulpathak/kundali/kundali_app/services/astrology.py", line 186, in calculate_extended_birth_details
+    local_dt = datetime(year, month, day, hour, minute)
+ValueError: day is out of range for month
+INFO:     127.0.0.1:54287 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54311 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54343 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54344 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54376 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54377 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54413 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139286139&lon=77.2090772090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54414 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139286139&lon=77.2090772090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54473 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139286139&lon=77.2090772090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54474 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54475 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54520 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54521 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54671 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54672 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54746 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54747 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54769 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54768 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54778 - "POST /astro/calculate/dasha/current?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54779 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54781 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54780 - "POST /astro/calculate/dasha/current?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54830 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139286139&lon=77.209077209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54833 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54832 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54829 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54828 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139286139&lon=77.209077209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54831 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54829 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54830 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54833 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54832 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54929 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54930 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54929 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54930 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54937 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54936 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55045 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55046 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55045 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55046 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55050 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55051 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55102 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55103 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55102 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55109 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55110 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55103 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55168 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55169 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55169 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55168 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55174 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55173 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55254 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55255 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55254 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55255 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55261 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55262 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55290 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55291 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55291 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55290 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55298 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55297 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56897 - "POST /astro/calculate/dasha/current?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56898 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56910 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56911 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56911 - "POST /astro/calculate/dasha/current?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56910 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56915 - "POST /astro/calculate/dasha/current?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56916 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56952 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56953 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56952 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56953 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56957 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56958 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57031 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57032 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57037 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57031 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57036 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57032 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57141 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57142 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57141 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57142 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57147 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57146 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57197 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57198 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57198 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57197 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57198 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57197 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57203 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57202 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57198 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57204 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57204 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57198 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57202 - "POST /astro/calculate/dasha/current?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57204 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57198 - "POST /astro/calculate/dasha/current?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57203 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57597 - "HEAD /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57778 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57779 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57778 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57779 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57785 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57784 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57856 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57857 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57857 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57856 - "POST /astro/calculate?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.2090 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57857 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57858 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57856 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57859 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57861 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57860 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57874 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57876 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57875 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57877 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57983 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57984 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57985 - "POST /astro/calculate/charts?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57986 - "POST /astro/calculate/dasha?dob=07/07/1994&tob=17:10&lat=28.6139&lon=77.209 HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [76229]
